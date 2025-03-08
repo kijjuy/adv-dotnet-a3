@@ -10,11 +10,14 @@ public class PatientController : ControllerBase
 {
 
     private readonly ApplicationDbContext _context;
+    private readonly ILogger<PatientController> _logger;
 
-    public PatientController(ApplicationDbContext context)
+    public PatientController(ILogger<PatientController> logger, ApplicationDbContext context)
     {
+        _logger = logger;
         _context = context;
-    }
+        }
+
 
     //POST /Patient
     [HttpPost]
@@ -35,6 +38,7 @@ public class PatientController : ControllerBase
         }
 
         var acceptHeader = Request.Headers["Accept"].ToString();
+        _logger.LogInformation("Accept Header: " + acceptHeader);
 
         if (acceptHeader == "application/xml")
         {
