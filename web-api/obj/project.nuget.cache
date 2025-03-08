@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qagx9k1UDNCpAlN6qhww3tndQGU4Z67zhnyBVwqzxjkGhV4eZpZW2ZjF5VSL5OqkVQUQo0hWilwOkXbTZ0rK8w==",
+  "success": true,
+  "projectFilePath": "/home/brandon/Projects/homework/advanced_dotnet/a3/web-api/web-api.csproj",
+  "expectedPackageFiles": [
+    "/home/brandon/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/home/brandon/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/brandon/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "/home/brandon/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "/home/brandon/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "/home/brandon/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
