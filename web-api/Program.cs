@@ -18,6 +18,12 @@ builder.Logging.AddConsole();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    DbInitializer.Initialize(scope.ServiceProvider);
+}
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
