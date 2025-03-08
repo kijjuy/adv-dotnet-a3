@@ -19,6 +19,7 @@ public class PatientController : ControllerBase
         }
 
 
+    //================================================================
     //POST /Patient
     [HttpPost]
     public async Task<IActionResult> CreatePatient(Patient patient)
@@ -27,24 +28,19 @@ public class PatientController : ControllerBase
         {
             return BadRequest(new { Message = "Patient is null", StatusCode = 400 });
         }
-
         _context.Patients.Add(patient);
         try {
             await _context.SaveChangesAsync();
         }
         catch (DbUpdateException) {
             return Conflict(new { Message = "Patient already exists", StatusCode = 409 });
-
         }
-
         var acceptHeader = Request.Headers["Accept"].ToString();
         _logger.LogInformation("Accept Header: " + acceptHeader);
-
         if (acceptHeader == "application/xml")
         {
             return CreatedAtAction("GetPatient", new { id = patient.Id }, patient);
         }
-
         else if (acceptHeader == "application/json") //if accpet header is json
         {
             return CreatedAtAction("GetPatient", new { id = patient.Id }, patient);
@@ -53,7 +49,7 @@ public class PatientController : ControllerBase
         }
     }
 
-
+    //================================================================
     //GET /Patient/{id}
     [HttpGet("{id}")]
     public async Task<IActionResult> GetPatient(Guid id)
@@ -66,6 +62,7 @@ public class PatientController : ControllerBase
         }
 
         var acceptHeader = Request.Headers["Accept"].ToString();
+        _logger.LogInformation("Accept Header: " + acceptHeader);
         if (acceptHeader == "application/xml")
         {
             return Ok(patient);
@@ -80,6 +77,7 @@ public class PatientController : ControllerBase
     }
 
 
+    //================================================================
     //PUT /Patient/{id}
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdatePatient(Guid id, Patient patient)
@@ -101,9 +99,103 @@ public class PatientController : ControllerBase
                 throw;
             }
         }
-
         return NoContent();
     }
+
+    //================================================================
+    //GET /Patient?firstName={firstName}
+    [HttpGet]
+    public async Task<IActionResult> GetPatientByFirstName(string firstName)
+    {
+        var patient = await _context.Patients.FirstOrDefaultAsync(p => p.FirstName == firstName);
+
+        if (patient == null)
+        {
+            return NotFound(new { Message = "Patient not found", StatusCode = 404 });
+        }
+
+        var acceptHeader = Request.Headers["Accept"].ToString();
+        _logger.LogInformation("Accept Header: " + acceptHeader);
+        if (acceptHeader == "application/xml")
+        {
+            return Ok(patient);
+        }
+
+        else if (acceptHeader == "application/json") //if accpet header is json
+        {
+            return Ok(patient);
+        } else {
+            return StatusCode(406, new { Message = "Not Acceptable", StatusCode = 406 });
+        }
+    }
+
+
+    //================================================================
+    //GET /Patient?lastName={lastName}
+    [HttpGet]
+    public async Task<IActionResult> GetPatientByLastName(string lastName)
+    {
+        var patient = await _context.Patients.FirstOrDefaultAsync(p => p.LastName == lastName);
+
+        if (patient == null)
+        {
+            return NotFound(new { Message = "Patient not found", StatusCode = 404 });
+        }
+
+        var acceptHeader = Request.Headers["Accept"].ToString();
+        _logger.LogInformation("Accept Header: " + acceptHeader);
+
+        if (acceptHeader == "application/xml")
+        {
+            return Ok(patient);
+        }
+
+        else if (acceptHeader == "application/json") //if accpet header is json
+        {
+            return Ok(patient);
+        } else {
+            return StatusCode(406, new { Message = "Not Acceptable", StatusCode = 406 });
+        }
+    }
+
+    //================================================================
+    //GET /Patient?dateOfBirth={dateOfBirth}
+    [HttpGet]
+    public async Task<IActionResult> GetPatientByDateOfBirth(DateTimeOffset dateOfBirth)
+    {
+        if (dateOfBirth == null)
+        {
+            return BadRequest(new { Message = "Date of Birth is null", StatusCode = 400 });
+        }
+
+        var patient = await _context.Patients.FirstOrDefaultAsync(p => p.DateOfBirth == dateOfBirth);
+        if (patient == null)
+        {
+            return NotFound(new { Message = "Patient not found", StatusCode = 404 });
+        }
+
+        var acceptHeader = Request.Headers["Accept"].ToString();
+        _logger.LogInformation("Accept Header: " + acceptHeader);
+
+
+        if (acceptHeader == "application/xml")
+        {
+            return Ok(patient);
+        }
+
+        else if (acceptHeader == "application/json") //if accpet header is json
+        {
+            return Ok(patient);
+        } else {
+            return StatusCode(406, new { Message = "Not Acceptable", StatusCode = 406 });
+        }
+    }
+
+
+
+
+    
+
 
 
 
