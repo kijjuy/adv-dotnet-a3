@@ -11,11 +11,14 @@ public class Immunization
     public DateTimeOffset CreationTime { get; set; }
 
     [Required]
+    [StringLength(128)]
     public String OfficialName { get; set; }
 
+    [StringLength(128)]
     public String? TradeName { get; set; }
 
     [Required]
+    [StringLength(128)]
     public String LotNumber { get; set; }
 
     [Required]
