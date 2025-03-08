@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using web_api.Models;
+using web_api.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseEnsureHeaders();
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();
