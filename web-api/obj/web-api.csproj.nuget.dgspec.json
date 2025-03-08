@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/home/brandon/Projects/homework/advanced_dotnet/a3/web-api/web-api.csproj": {}
+    "C:\\Users\\Huy\\Source\\Repos\\adv-dotnet-a3\\web-api\\web-api.csproj": {}
   },
   "projects": {
-    "/home/brandon/Projects/homework/advanced_dotnet/a3/web-api/web-api.csproj": {
+    "C:\\Users\\Huy\\Source\\Repos\\adv-dotnet-a3\\web-api\\web-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/brandon/Projects/homework/advanced_dotnet/a3/web-api/web-api.csproj",
+        "projectUniqueName": "C:\\Users\\Huy\\Source\\Repos\\adv-dotnet-a3\\web-api\\web-api.csproj",
         "projectName": "web-api",
-        "projectPath": "/home/brandon/Projects/homework/advanced_dotnet/a3/web-api/web-api.csproj",
-        "packagesPath": "/home/brandon/.nuget/packages/",
-        "outputPath": "/home/brandon/Projects/homework/advanced_dotnet/a3/web-api/obj/",
+        "projectPath": "C:\\Users\\Huy\\Source\\Repos\\adv-dotnet-a3\\web-api\\web-api.csproj",
+        "packagesPath": "C:\\Users\\Huy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Huy\\Source\\Repos\\adv-dotnet-a3\\web-api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/brandon/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Huy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,7 +38,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -62,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/brandon/.dotnet/sdk/6.0.428/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
