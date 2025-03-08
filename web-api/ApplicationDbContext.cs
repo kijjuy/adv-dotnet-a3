@@ -10,4 +10,8 @@ public class ApplicationDbContext : DbContext
 	}
 
 	public DbSet<Immunization> ImmunizationItems { get; set; } = null;
+
+	public DbSet<Patient> Patients { get; set; } = null;
+
+	
 }
