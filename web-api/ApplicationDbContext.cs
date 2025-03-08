@@ -1,0 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+
+namespace web_api.Models;
+
+public class ApplicationDbContext : DbContext
+{
+	public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
+	    :base(options)
+	{
+	}
+
+	public DbSet<Immunization> ImmunizationItems { get; set; } = null;
+}
