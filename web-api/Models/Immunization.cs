@@ -18,5 +18,8 @@ public class Immunization
     [Required]
     public String LotNumber { get; set; }
 
+    [Required]
     public DateTimeOffset ExpirationDate { get; set; }
+
+    public DateTimeOffset UpdatedTime { get; set; }
 }
