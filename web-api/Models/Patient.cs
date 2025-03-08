@@ -14,7 +14,7 @@ public class Patient
 
     [Required]
     [StringLength(128)]
-    public String FirstName { get; set; }
+    public string FirstName { get; set; }
 
     [Required]
     [StringLength(128)]
