@@ -18,21 +18,34 @@ public class ImmunizationController : ControllerBase
     {
         _logger = logger;
         _context = context;
-        _logger.LogInformation("Hello from controller constructor");
+        _logger.LogDebug("Hello from controller constructor");
     }
 
     [HttpGet("{id}")]
-    public Immunization Get(Guid id)
+    public ActionResult<Immunization> Get(Guid id)
     {
-        _logger.LogInformation("Hit Immunization get method");
+        _logger.LogDebug("Hit Immunization get method");
+
+	if (id == null || id.Equals(Guid.Empty)) {
+	    throw new BadHttpRequestException("Id is null");
+	}
+
         var immunization = _context.ImmunizationItems.Where(item => id == item.Id).FirstOrDefault();
-        return immunization;
+	if(immunization == null) {
+	    return NotFound("Cound not find Immunization with id="+id);
+	}
+        return Ok(immunization);
     }
 
     [HttpPost]
-    public async Task<ActionResult<Immunization>> NewImmunization(Immunization immunization)
+    public async Task<ActionResult<Immunization>> NewImmunization([FromForm] Immunization immunization)
     {
-        _logger.LogInformation("Hit NewImmunization endpoint");
+        _logger.LogDebug("Hit NewImmunization endpoint");
+
+	if(immunization == null) {
+	    throw new BadHttpRequestException("Immunization is null");
+	}
+
         Immunization newImmunization = new Immunization
         {
             Id = Guid.NewGuid(),
