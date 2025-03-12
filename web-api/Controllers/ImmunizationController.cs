@@ -64,6 +64,35 @@ public class ImmunizationController : ControllerBase
         return CreatedAtAction("NewImmunization", new { id = newImmunization.Id }, newImmunization);
     }
 
+    [HttpPut]
+    public async Task<ActionResult<Immunization>> PutImmunization(Guid id, Immunization immunization)
+    {
+	if(id == null || id.Equals(Guid.Empty)) {
+	    throw new BadHttpRequestException("Id is null");
+	}
+
+	if (immunization == null) {
+	    throw new BadHttpRequestException("New immunization is null");
+	}
+
+	var curImmunization = await _context.ImmunizationItems.FindAsync(id);
+
+	if(curImmunization == null) {
+	    return NotFound("Cound not find immunization with id="+id);
+	}
+	
+	curImmunization.LotNumber = immunization.LotNumber;
+	curImmunization.TradeName = immunization.TradeName;
+	curImmunization.OfficialName = immunization.OfficialName;
+	curImmunization.ExpirationDate = immunization.ExpirationDate;
+	curImmunization.UpdatedTime = DateTimeOffset.Now;
+
+	_context.ImmunizationItems.Update(curImmunization);
+	await _context.SaveChangesAsync();
+
+	return Ok("Updated immunization record.");
+    }
+
 
 }
 
